@@ -8,7 +8,7 @@ impl crate::Backend for Handler {
             crate::Message::Install(_) => Ok(()),
             crate::Message::Remove(_) => Ok(()),
             crate::Message::Query(_) => Ok(()),
-            crate::Message::Upgrade(updateType) => match updateType {
+            crate::Message::Upgrade(update_type) => match update_type {
                 UpdateType::DistUpdate => Ok(()),
                 UpdateType::System => Ok(()),
                 UpdateType::Package(_) => Ok(()),
