@@ -1,4 +1,12 @@
+IN DEVELOPMENT
+
+<img src="logo.gif">
+
 # Storekit: Distro-agnostic package backend
+
+> Storekit is still in development. Expect it to not work
+
+> Getting backends and the arch backend to work is our main focus right now. Expect debian/ubuntu and derivatives later.
 
 Storekit is like packagekit, but better. It's a library, so not other processes running and no leaking memory in the background and it's easily extensible.
 
@@ -14,6 +22,11 @@ fn main() {
     send_message(storekit::Message::Install("sl"))
 }
 ```
+
+### Backend list
+- Arch (IN DEVELOPMENT!!!)
+    - needs libalpm bindings, then it's just doing the functions
+    - partial updates not allowed
 
 ## Adding your own backends
 1. Add a rust file in `src/backends/modules/`, set its name to the id of your backend followed by `.rs`.
@@ -86,6 +99,13 @@ pub use modules::yourBackend::Handler as yourBackend;
 ```
 
 7. Done, now your backend is importable. It should be imported automatically by storekit.
+
+## Building
+Storekit uses a build script, so you can select which backend to build:
+```
+% BACKEND=arch BINDS=libalpm cargo build
+```
+Builds with `arch.rs` backend and `libalpm.rs` bindings.
 
 ## Using Storekit
 Never partially update. Therefore, syncing is not recommended - Some backends also have features that prevent partial updates - Such as the Arch Linux backend.
