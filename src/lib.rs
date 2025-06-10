@@ -39,6 +39,7 @@ pub enum FailureReason {
     NonexistentPackage,
     FailedConnection,
     PartialUpdateNotAllowed,
+    NullBackend,
 }
 
 /// Message sent to a backend
@@ -57,14 +58,7 @@ pub trait Backend {
     fn get_status() -> BackendStatus;
 }
 
-pub fn get_handlers() {
-}
-
-pub fn set_backend() {
-    
-}
-
-pub fn send_message(message: Message) {
+pub fn send_message(_message: Message) {
     
 }
 
