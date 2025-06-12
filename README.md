@@ -95,7 +95,10 @@ pub mod yourBackend;
 
 6. Add your module to the `src/backends/mod.rs` file:
 ```rs
+// #[cfg(feature = "arch")]
 // pub use modules::arch::Handler as arch;
+
+#[cfg(feature = "yourBackend")]
 pub use modules::yourBackend::Handler as yourBackend;
 ```
 
