@@ -2,5 +2,6 @@
 mod modules;
 pub mod bindings;
 
-pub use modules::null::Handler as null;
+#[cfg(feature = "arch")]
 pub use modules::arch::Handler as arch;
+pub use modules::null::Handler as null;
