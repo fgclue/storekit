@@ -16,6 +16,6 @@ fn main() {
 
     println!("cargo::warning=Using src/backends/modules/{}.rs as backend", backend.to_string());
     println!("cargo::warning=& src/backends/bindings/{}.rs as bindings", bindings.to_string());
+    println!("cargo::rustc-cfg=feature=\"{}\"", backend);
     println!("cargo::rerun-if-changed=build.rs");
-    println!("cargo::rustc-cfg=feature=\"{}\"", backend)
 }
