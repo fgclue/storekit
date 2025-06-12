@@ -2,6 +2,8 @@ use crate::UpdateType;
 
 pub struct Handler {}
 
+static mut status: crate::BackendStatus = crate::BackendStatus::Waiting;
+
 impl crate::Backend for Handler {
     fn send_message(message: crate::Message) -> Result<(), crate::FailureReason> {
         return match message {
@@ -18,6 +20,6 @@ impl crate::Backend for Handler {
         }
     }
     fn get_status() -> crate::BackendStatus {
-        return crate::BackendStatus::Waiting;
+        return status;
     }
 }
