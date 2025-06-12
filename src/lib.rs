@@ -59,10 +59,7 @@ pub trait Backend {
     fn get_status() -> BackendStatus;
 }
 
-static mut CURRENT_BACKEND: Backend = &backends::null;
-
 pub fn send_message(message: Message) {
-    
 }
 
 #[cfg(test)]
