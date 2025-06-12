@@ -69,7 +69,7 @@ fn send_message(message: crate::Message) -> Result<(), crate::FailureReason> {
 }
 ```
 
-4. Add the get_status function:
+4. Add the get_status function (do not use `static mut`!):
 ```rs
 static mut currentStatus: crate::BackendStatus = crate::BackendStatus::Waiting;
 

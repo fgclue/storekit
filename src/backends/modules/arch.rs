@@ -2,7 +2,7 @@ use crate::UpdateType;
 
 pub struct Handler {}
 
-static mut status: crate::BackendStatus = crate::BackendStatus::Waiting;
+static mut status: crate::BackendStatus = crate::BackendStatus::Waiting; // Danger!
 
 impl crate::Backend for Handler {
     fn send_message(message: crate::Message) -> Result<(), crate::FailureReason> {
