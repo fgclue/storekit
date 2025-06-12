@@ -40,6 +40,7 @@ pub enum FailureReason {
     FailedConnection,
     PartialUpdateNotAllowed,
     NullBackend,
+    Other(String),
 }
 
 /// Message sent to a backend
