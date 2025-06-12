@@ -5,3 +5,7 @@ edition = "2024"
 build = "src/build.rs"
 
 [dependencies]
+
+[features]
+arch = []
+libalpm = []
