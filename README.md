@@ -86,19 +86,55 @@ impl crate::Backend for Handler {
 
 5. Add your module to the `src/backends/modules/mod.rs` file:
 ```rs
+// #[cfg(feature = "arch")]
 // pub mod arch;
+
+#[cfg(feature = "yourBackend")]
 pub mod yourBackend;
 ```
 
 6. Add your module to the `src/backends/mod.rs` file:
 ```rs
-mod modules;
-
 // pub use modules::arch::Handler as arch;
 pub use modules::yourBackend::Handler as yourBackend;
 ```
 
-7. Done, now your backend is importable. It should be imported automatically by storekit.
+7. Add your backend to the Cargo.toml:
+```toml
+[features]
+# arch = []
+# libalpm = []
+
+yourBackend = []
+# yourBindings = []
+
+# ...
+```
+
+8. Done, now your backend is importable. It should be imported automatically by storekit.
+
+### Adding bindings
+Since you need to interact with libraries that are not written in rust, you need to create bindings.
+
+This section does not cover on how to build bindings, but what you need to do after building one.
+
+1. Add your bindings to the Cargo.toml. Seperate the backends and bindings with spaces:
+```toml
+[features]
+# arch = []
+# libalpm = []
+
+yourBackend = []
+yourBindings = []
+```
+
+2. Add your bindings to the `src/backends/bindings/mod.rs` file:
+```rs
+#[cfg(feature = "yourBindings")]
+pub mod yourBindings;
+```
+
+3. Done!
 
 ## Building
 Storekit uses a build script, so you can select which backend to build:
@@ -106,6 +142,11 @@ Storekit uses a build script, so you can select which backend to build:
 % BACKEND=arch BINDS=libalpm cargo build
 ```
 Builds with `arch.rs` backend and `libalpm.rs` bindings.
+
+```
+% BACKEND=null BINDS=null cargo build
+```
+Builds with `null.rs` backend and `null.rs` bindings.
 
 ## Using Storekit
 Never partially update. Therefore, syncing is not recommended - Some backends also have features that prevent partial updates - Such as the Arch Linux backend.
