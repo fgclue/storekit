@@ -33,7 +33,7 @@ fn main() {
 
 2. Copy the following code:
 ```rs
-pub struct Handler {}
+pub struct Handler;
 
 impl crate::Backend for Handler {
     fn send_message(message: crate::Message) -> Result<(), String> {

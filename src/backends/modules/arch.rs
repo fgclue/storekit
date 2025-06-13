@@ -1,6 +1,6 @@
 use crate::UpdateType;
 
-pub struct Handler {}
+pub struct Handler;
 
 static mut status: crate::BackendStatus = crate::BackendStatus::Waiting; // Danger!
 

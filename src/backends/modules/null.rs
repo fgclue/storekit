@@ -1,4 +1,4 @@
-pub struct Handler {}
+pub struct Handler;
 
 impl crate::Backend for Handler {
     fn send_message(_message: crate::Message) -> Result<(), crate::FailureReason> {
